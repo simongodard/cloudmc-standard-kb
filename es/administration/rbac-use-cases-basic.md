@@ -8,7 +8,7 @@ Los siguientes casos prácticos ilustran la flexibilidad de roles en CloudMC con
 
 El diagrama abajo representa tres organizaciónes hipotéticas con entornos y una sub-organización.  Tomar nota de que Organización A tiene dos etiquetas, **billable** y **managed**, y Sub-Organización C tiene una etiqueta, **billable**.  Organización D es una prueba aprobada, etiquetada automaticamente con **trial**.
 
-![use cases diagram](../../assets/rbac-use-cases-trial-en.png)
+![use cases diagram](/assets/rbac-use-cases-trial-en.png)
 
 | Escenario | Nombre de rol sugerido | Configuración del rol | Notas del ejemplo |
 | --- | --- | --- | --- |
