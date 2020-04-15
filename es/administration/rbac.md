@@ -17,11 +17,11 @@ El control de acceso en CloudMC se alcanza a través un modelo flexible y multi-
 
 - **Usuario:** Una cuenta usuaria es la manera que un individuo se connecta al portal de CloudMC.  Un usuario siempre está asignado un rol de sistema primario en la organización donde se creó la cuenta.  Un usuario puede ser asignado roles de sistema adicionales, y que pueden ser recorridos a una o más organizaciones.
 
-- **Entorno:** Una unidad lógica dentro de una organización, usada para apartar y agrupar recusos de una manera segura.  El acceso está controlar por una combinación de roles entornales y de controles de acceso del alcance.
+- **Entorno:** Una unidad lógica dentro de una organización, usada para apartar y agrupar recursos de una manera segura.  El acceso está controlar por una combinación de roles entornales y de controles de acceso del alcance.
 
 - **Rol entornal:** Una colección compuesta de permisos entornales, que está asignada a los miembros de un entorno.
 
-![user access control chart](/assets/rbac-roles_chart-en.png)
+![user access control chart](/assets/rbac-roles-chart-es.png)
 
 ## Los roles de sistema
 La función del rol de sistema es a controlar el acceso a la funcionalidad de CloudMC en una manera sencilla y estandardizada.  Un rol de sistema puede ser asignado a usuarios dentro de una organización, además que permitir la colaboración a travès de las organizaciónes.  Los roles de sistema se aplican en la interfaz Web así como en el API de CloudMC.  Los roles personalizados pueden ser definidos con permisos que son alineados con las reglas del negocio.
@@ -41,11 +41,12 @@ Usando la funcionalidad de etiquetas, el alcance de un rol asignado puede crecer
 Los roles fijos incorporados en CloudMC son applicables a una amplia gama de casos de uso.  Ellos pueden ser asignados al rol primario de un usuario, o como un rol addicional.
 
 Un sumario de cada rol fijo cuando aplicado como un rol primario:
-- **Invitado:**  Un rol de solo-lectura.  Puede ver los recursos en los entornos los cuales la cuenta es miembro.
-- **Usuario:**  Puede crear nuevos entornos con conexiones de servicio que ya existen, y gestionar esos entornos los cuales es dueño.
-- **Administrador:**  Puede gestionar la organización.  Puede gestionar todos los entoronos en todas las conexiones de servico.  No tiene derecho ni de ver las sub-organizaciones ni de crear nuevas sub-organizaciones.
-- **Revendedor:**  Puede gestionar la imagen de marca y las tarificaciones de la organización y sus sub-organizaciones, y puede crear sub-organizaciones en la organización.  No puede crear nuevas organizaciones.
-- **Operador:**  Puede crear organizaciones y sub-organizaciones, gestionar conexiones de servicio, cuotas de servicio, compromisos, y tiene acceso completo a todas otras organizaciones, recursos y parámetros del sistema.
+
+- **Invitado:**  Un rol de solo-lectura.  No puede enumerar ningún entorno al que este usuario no esté asignado.
+- **Usuario:**  Puede crear nuevos entornos con conexiones de servicio existentes.  No puede ver los entornos existentes hasta que el usuario sea agregado a ellos.
+- **Administrador:**  Puede gestionar la organización.  Puede gestionar usuarios, roles, y todos los entoronos en todas las conexiones de servico, y acceder a los datos de uso.  No tiene derecho ni de ver las sub-organizaciones ni de crear nuevas sub-organizaciones.
+- **Revendedor:**  Puede gestionar la imagen de marca y las tarificaciones de la organización y sus sub-organizaciones, y puede crear nuevas sub-organizaciones en la organización.  No puede crear nuevas organizaciones.
+- **Operador:**  Puede crear organizaciones y sub-organizaciones, gestionar conexiones de servicio, cuotas, compromisos, y tiene acceso completo a todas otras organizaciones, recursos y parámetros del sistema.
 
 Cada rol fijo tiene un alcance predeterminado:
 - Invitado, Usuario, y Administrador:  Solamenta la organización dentro de que existe la cuenta usuaria.
@@ -54,11 +55,11 @@ Cada rol fijo tiene un alcance predeterminado:
 
 Como indica el diagrama abajo, subiendo por la jerarquía cada rol tiene todos los privilegios que los precedents:
 
-![permissions chart](/assets/rbac-permissions-en.png)
+![permissions chart](/assets/rbac-permissions-es.png)
 
 ### Los roles personalizados
 
-CloudMC permite los usuarios con el rol de *Administrador* o mayor (o los usuarios con un rol personalizado que incluye el permiso *Roles: Gestionar*, explicado abajo en esta sección) a crear nuevos roles con permisos que están alineados con las necesidades commerciales específicas para la empresa.  El administrador selecciona los permisos individuals y guarde el rol, y luego lo aplica a los usuarios dentro de la organización.  Los derechos efectivos están regidos por la unión del entero de permisos y alcances del rol primario con los de todos otros roles asignados.  El rol primario de un usuaiaro tiene que ser uno de los roles fijos incorporados en CloudMC, jamás un rol personalizado.
+CloudMC permite a un usuario con el rol de *Administrador* y superior (o un usuario con un rol personalizado que incluye el permiso *Roles: Gestionar*, explicado abajo en esta sección) a crear nuevos roles con permisos que están alineados con las necesidades commerciales específicas para la empresa.  El administrador selecciona los permisos individuals y guarde el rol, y luego lo aplica a los usuarios dentro de la organización.  Los derechos efectivos están regidos por la unión del entero de permisos y alcances del rol primario con los de todos otros roles asignados.  El rol primario de un usuaiaro tiene que ser uno de los roles fijos incorporados en CloudMC, jamás un rol personalizado.
 
 **Aviso:**  Al momento de eliminar una organización, todos los roles personalizados definidos adentro de tal organización se borran al mismo tiempo.
 
@@ -75,6 +76,8 @@ Para controlar el acceso a los recursos dentro de un entorno, CloudMC introduce 
 - **Propietario:**  Concede la habilidad de modificar los ajustos del entorno y tabmién a gestionar los usuarios.
 
 ## Cómo asignar los roles
+
+CloudMC permite a un usuario col el rol *Administrador* y superior (o un usuario con un rol personalizado que incluye el permiso *Usuarios : Gestionar*) asignar roles fijos y personalizados a otros usuarios.  El administrador no está permitido asignar un permiso a otro usuario sin también tener el mismo permiso.  Este modelo de seguridad evita que un usuario pueda aumentar su proprio acceso sin autorización (elevación de privilegios).
 
 Roles primarios se asignan a usuarios en la página *Editar usuario*.
 

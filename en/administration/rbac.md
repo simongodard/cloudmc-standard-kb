@@ -21,7 +21,7 @@ Access control in CloudMC is achieved through a flexible, multi-tenant model tha
 
 - **Environment Role:** A collection of environment permissions that is applied to the members of an environment.
 
-![user access control chart](/assets/rbac-roles_chart-en.png)
+![user access control chart](/assets/rbac-roles-chart-en.png)
 
 ## System roles
 
@@ -42,10 +42,10 @@ The fixed roles included with CloudMC are applicable to a broad range of use cas
 
 A summary of each fixed role when applied as a primary role:
 
-- **Guest:** A read-only role.  Can view resources in assigned environments.
-- **User:** Can create new environments with existing service connections, and manage environments owned by the user.  Cannot see any existing environments until the user is added to them.
-- **Administrator:** Can manage the organization. Can manage all environments in all service connections.  Cannot view sub-organizations nor create new sub-organizations.
-- **Reseller:** Can manage branding and pricing in the organization and its sub-organizations, and can create sub-organizations in the organization.  Cannot create new organizations.
+- **Guest:** A read-only role.  Cannot list any environments that this user is not assigned to.
+- **User:** Can create new environments with existing service connections.  Cannot see any existing environments until the user is added to them.
+- **Administrator:** Can manage the organization. Can manage users, roles, and all environments in all service connections, and access usage data.  Cannot view sub-organizations nor create new sub-organizations.
+- **Reseller:** Can manage branding and pricing in the organization and its sub-organizations, and can create new sub-organizations in the organization.  Cannot create new organizations.
 - **Operator:** Can create organizations and sub-organizations, manage service connections, quotas, commitments, and has full access to all other organizations, system resources and settings.
 
 Each fixed role has a default scope:
@@ -59,7 +59,7 @@ As the diagram below indicates, rising through the hierarchy every role has all 
 
 ### Custom Roles
 
-CloudMC allows users with the *Administrator* role and higher (or users with a custom role that includes the *Roles: Manage* permission, explained in this section) to create new roles with permissions that are aligned with specific business needs.  The administrator can select individual permissions and save the role, then apply that role to users within the organization.  A user's effective rights are governed by the union of all the permissions and scope of the primary role with all additional roles.  A user's primary role must be one of the built-in fixed roles, it cannot be a custom role.
+CloudMC allows a user with the *Administrator* role and higher (or a user with a custom role that includes the *Roles: Manage* permission, explained in this section) to create new roles with permissions that are aligned with specific business needs.  The administrator can select individual permissions and save the role, then apply that role to users within the organization.  A user's effective rights are governed by the union of all the permissions and scope of the primary role with all additional roles.  A user's primary role must be one of the built-in fixed roles, it cannot be a custom role.
 
 **Important:** When an organization is deleted, any custom roles that were defined within that organization are also deleted.
 
@@ -76,6 +76,8 @@ To control access to resources within an environment, CloudMC introduces the con
 - **Owner:** Adds the ability to change the environment settings and to manage users.
 
 ## How to assign roles
+
+CloudMC allows a user with the *Administrator* role and higher (or a user with a custom role that includes the *Users: Manage* permission) to assign fixed and custom roles to users.  The administrator cannot assign a permission to another user if the administrator does not already have that same permission.  This security model prevents a user from escalating their own access without authorization (privilege escalation).
 
 Primary roles are assigned to a user in the *Edit user* page.
 
