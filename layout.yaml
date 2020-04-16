@@ -1,10 +1,13 @@
 categories:
 - category: general
+  featured: true
+  icon: fa fa-info-circle
   articles:
       - cloud.ca-in-a-nutshell.md
       - 10-noteworthy-improvements-in-the-new-cloud-ca-portal.md
       - need-more-help.md
 - category: basic-concepts
+  featured: true
   articles:
       - environments-to-organize-workloads-and-users.md
       - main-cloud.ca-entities.md
